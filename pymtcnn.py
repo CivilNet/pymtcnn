@@ -176,6 +176,9 @@ class PNet(Net):
         w = frame.shape[1]
         hs = int(np.ceil(h * scale))
         ws = int(np.ceil(w * scale))
+        #RNet need greater than 11
+        if hs < 11 or ws < 11:
+            return np.array([])
 
         im_data = cv2.resize(frame, (ws, hs))
         im_data = (im_data - 127.5)/128
